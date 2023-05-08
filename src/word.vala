@@ -48,6 +48,8 @@ namespace Japdict {
                 var senses = parse_senses (data);
                 var list_row = new Gtk.ListBoxRow ();
                 var label = new Gtk.Label (slug + "\t" + senses);
+                label.wrap_mode = Pango.WrapMode.WORD;
+                label.wrap = true;
                 list_row.set_child (label);
                 label.set_margin_bottom(10);
                 label.set_margin_start(10);
