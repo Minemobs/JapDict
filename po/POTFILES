@@ -1,0 +1,6 @@
+data/fr.minemobs.JapaneseDict.desktop.in
+data/fr.minemobs.JapaneseDict.appdata.xml.in
+data/fr.minemobs.JapaneseDict.gschema.xml
+src/main.vala
+src/window.vala
+src/window.ui
