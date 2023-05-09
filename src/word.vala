@@ -44,17 +44,22 @@ namespace Japdict {
             uint max = uint.min(5, data_array.get_length ());
             for(uint i = 0; i < max; i++) {
                 var data = data_array.get_element(i).get_object ();
-                string slug = data.get_string_member ("slug");
+                string slug = data.get_string_member ("slug").split("-")[0];
                 var senses = parse_senses (data);
                 var list_row = new Gtk.ListBoxRow ();
-                var label = new Gtk.Label (slug + "\t" + senses);
-                label.wrap_mode = Pango.WrapMode.WORD;
-                label.wrap = true;
-                list_row.set_child (label);
-                label.set_margin_bottom(10);
-                label.set_margin_start(10);
-                label.set_margin_end(10);
-                label.set_halign (Gtk.Align.START);
+                var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
+                box.set_homogeneous (false);
+                var slug_label = new Gtk.Label (slug);
+                box.append (slug_label);
+                var senses_label = new Gtk.Label (senses);
+                box.append (senses_label);
+                senses_label.wrap_mode = Pango.WrapMode.WORD;
+                senses_label.wrap = true;
+                list_row.set_child (box);
+                box.set_margin_bottom(10);
+                box.set_margin_start(10);
+                box.set_margin_end(10);
+                senses_label.set_halign (Gtk.Align.BASELINE);
                 list.append(list_row);
             }
         }
@@ -66,15 +71,15 @@ namespace Japdict {
                 buffer.append("%s %u) ".printf(i == 0 ? "" : " |", i));
                 var defs = senses.get_element (i).get_object().get_array_member ("english_definitions");
                 defs.foreach_element ((_, i, def) => buffer.append(def.get_string () + (i == (defs.get_length () - 1) ? "" : " / ")));
-                if(senses.get_length() == i) {
-                    buffer.append(" ;");
-                }
+                if(senses.get_length() == i) buffer.append(" ;");
             }
             return buffer.str;
         }
 
         private void on_row_activated(Gtk.ListBoxRow row) {
-            Gtk.Label label = row.get_child () as Gtk.Label;
+            Gtk.Box box = row.get_child () as Gtk.Box;
+            if(box == null) return;
+            Gtk.Label label = box.get_first_child () as Gtk.Label;
             if(label == null) return;
             clipboard.set_text (label.get_text());
         }
