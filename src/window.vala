@@ -36,7 +36,7 @@ namespace Japdict {
 
         public Window (Gtk.Application app) {
             Object (application: app);
-            word = new Word (list, input);
+            word = new Word (list, input, this);
             centered_box.set_center_widget(input);
             input.activate.connect (on_input);
         }

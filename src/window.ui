@@ -6,7 +6,7 @@
     <property name="default-height">300</property>
     <child>
       <object class="GtkBox">
-        <property name="orientation">vertical</property>
+        <property name="orientation">1</property>
         <child>
           <object class="GtkHeaderBar" id="header_bar">
             <child type="end">
@@ -27,7 +27,7 @@
         </child>
         <child>
           <object class="GtkCenterBox" id="centered_box">
-            <property name="orientation">horizontal</property>
+            <property name="orientation">0</property>
             <child>
               <object class="GtkSearchEntry" id="input">
                 <property name="margin-top">10</property>
@@ -48,7 +48,7 @@
             <child>
               <object class="GtkListBox" id="list">
                 <property name="hexpand">true</property>
-                <property name="selection-mode">none</property>
+                <property name="selection-mode">0</property>
                 <property name="show-separators">true</property>
                 <style>
                   <class name="rich-list"/>
