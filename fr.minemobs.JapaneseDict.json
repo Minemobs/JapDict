@@ -1,7 +1,7 @@
 {
     "app-id" : "fr.minemobs.JapaneseDict",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "43",
+    "runtime-version" : "44",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.vala"
@@ -49,8 +49,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-                    "tag": "v0.6.0"
-                    }
+                    "tag": "v0.8.1"
+                }
             ]
         }
     ]

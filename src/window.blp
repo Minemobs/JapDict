@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template JapdictWindow : Adw.ApplicationWindow {
+template $JapdictWindow : Adw.ApplicationWindow {
   default-width: 600;
   default-height: 300;
 
@@ -51,11 +51,6 @@ template JapdictWindow : Adw.ApplicationWindow {
 
 menu primary_menu {
   section {
-    item {
-      label: _("_Preferences");
-      action: "app.preferences";
-    }
-
     item {
       label: _("_Keyboard Shortcuts");
       action: "win.show-help-overlay";
